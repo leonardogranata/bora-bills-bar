@@ -1,0 +1,45 @@
+
+{% extends 'menu/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Bem-vindo ao Bora Bills Bar!</h1>
+    <p>O bar oficial do Deus da Destruição!</p>
+    <img src="{% static "menu/bills01.png" %}" alt="Bills" width="350" style="margin-top:2rem;border-radius:18px;border:3px solid #ffe066;">
+    <form method="get" action="" style="display:flex;align-items:center;gap:1rem;justify-content:center;background:#fff3c1bb;padding:1.2em 1.5em;border-radius:16px;box-shadow:0 2px 10px #39004818;margin-bottom:2rem;margin-top:2rem;">
+        <label for="cidade" style="margin-right:.5em;font-weight:bold;color:#390048;"><span style="font-size:1.08em;">️ Previsão do tempo na sua cidade:</span></label>
+        <input type="text" name="cidade" id="cidade" placeholder="Ex: São Paulo" value="{{ cidade|default:'' }}" style="padding:0.55em 1em;border-radius:9px;border:1.5px solid #390048;font-size:1em;min-width:170px;outline:none;" />
+        <button type="submit" style="padding:0.55em 1.2em;border-radius:9px;background:#390048;color:#ffe066;font-weight:bold;border:none;font-size:1em;cursor:pointer;transition:background 0.2s;">Ver clima</button>
+    </form>
+
+    {% if clima and cidade %}
+        <div style="background:#fff3c1;border-radius:16px;padding:1.2rem 1.5rem;margin:1.5rem 0 1.5rem 0;box-shadow:0 2px 12px #39004818;">
+            <b>Previsão do tempo para {{ cidade }}:</b>
+            <span style="font-size:1.2em;color:#390048;">{{ clima }}</span>
+            <br>
+            <span style="font-size:0.98em;color:#675;">
+            {% if clima %}
+                {% if "quente" in clima or "céu limpo" in clima or "ensolarado" in clima %}
+                    Calor cósmico! Que tal pedir um drink gelado do Whis? 🧊🍹
+                {% elif "chuva" in clima or "nublado" in clima %}
+                    Dia perfeito para um drink encorpado do Bills! 🍶
+                {% elif "neblina" in clima or "gelo" in clima %}
+                    Peça uma bebida quente e aqueça seu Ki! ☕
+                {% else %}
+                    Aproveite e peça seu drink favorito!
+                {% endif %}
+            {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+    {% if clima %}
+        <div style="background:#fff3c1;border-radius:16px;padding:1.2rem 1.5rem;margin:1.5rem 0 1.5rem 0;box-shadow:0 2px 12px #39004818;">
+            <b>Previsão do tempo para São Paulo:</b>
+            <span style="font-size:1.2em;color:#390048;">{{ clima }}</span>
+            <br>
+            <span style="font-size:0.98em;color:#675;">Hoje é um ótimo dia para um drink cósmico!</span>
+        </div>
+    {% endif %}
+{% endblock %}
+
