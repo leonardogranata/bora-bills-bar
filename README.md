@@ -1,6 +1,5 @@
 # 🍹 Bora Bills Bar — Integrações via API (Projeto SENAI)
 
-**Autor:** [Seu Nome]  
 **Curso:** Desenvolvimento de Sistemas — SENAI  
 **Tema:** Integrações via API usando Django
 
